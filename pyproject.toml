@@ -1,0 +1,89 @@
+[project]
+name = "scripts"
+version = "0.1.0" 
+requires-python = ">=3.12"
+dependencies = [
+    "pandas>=2.2.3",
+    "pandas-stubs>=2.2.3.241126",
+    "requests>=2.31.0",
+    "Pillow>=10.0.0",
+    "types-Pillow"
+]
+[dependency-groups]
+dev = [
+]
+
+
+[build-system]
+requires = ["setuptools"]
+build-backend = "setuptools.build_meta"
+
+[tool.sketch]
+module_name = "src.main"
+code_location_name = "src"
+
+[tool.ruff]
+# Ruff-specific configurations
+target-version = "py38"
+line-length = 100
+
+# Moving all lint configurations directly under [tool.ruff]
+exclude = []
+ignore = [
+    "D100",  # Missing public docstrings
+    "D101",
+    "D102",
+    "D103",
+    "D104",
+    "D105",
+    "D106",
+    "D107",
+    "D401",  # Docstring imperative mood
+    "E402",  # Module level import not at top
+    "E501",  # Line too long
+    "E721",  # No type comparison
+    "E722",  # Bare exception
+    "E731",  # No assign lambda
+    "PERF203",  # Try-except-in-loop
+    "RUF005",  # No concatenation
+    "RUF012",  # Use ClassVar for attr declarations with defaults
+    "D200",  # One-line docstring should fit
+    "D205",  # Blank line after summary
+    "D417",  # Missing arg in docstring
+    "PERF401",  # Manual list comprehension
+    "PERF402",  # Manual list copy
+]
+
+select = [
+    "A001",  # Flake8-builtins
+    "A002",
+    "B018",  # Useless expression
+    "B035",  # Static key dict comprehension
+    "D",     # Pydocstyle
+    "E",     # Pycodestyle
+    "F",     # Pyflakes
+    "I001",  # Isort
+    "PERF",  # Performance
+    "PLE",   # Pylint
+    "PLW",
+    "RUF",   # Ruff-specific
+    "SLF001", # Private member access
+    "TID251", # Banned API
+    "T20",   # Disallow print statements
+    "UP032", # F-strings
+    "W605",  # Invalid escape sequence
+]
+
+[tool.ruff.pydocstyle]
+convention = "google"
+
+[tool.ruff.isort]
+combine-as-imports = true
+force-wrap-aliases = true
+
+[tool.ruff.flake8-builtins]
+builtins-ignorelist = ["id"]
+
+[tool.ruff.per-file-ignores]
+"**/alembic/versions/*.py" = ["D"]
+
